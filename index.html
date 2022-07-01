@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Q-Learning</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="mainScreen">
+      <div
+        style="
+          max-height: 600px;
+          overflow-x: hidden;
+          overflow-y: auto;
+          margin: 30px;
+        "
+      >
+        <table>
+          <thead>
+            <tr>
+              <td style="text-align: left; min-width: 100px">Q()</td>
+              <td style="text-align: left; min-width: 200px">R</td>
+            </tr>
+          </thead>
+          <tbody id="tableQlearnig" class="cor-fundo-tbody"></tbody>
+        </table>
+      </div>
+      <div id="warning"></div>
+      <div id="map"></div>
+    </div>
+    <div id="controlPanel">
+      <button id="generate" class="able" onclick="generateMap()">
+        REINICIAR
+      </button>
+      <div>Episodios</div>
+      <div>
+        <input
+          type="text"
+          id="generation"
+          class="size"
+          placeholder="100"
+          onkeyup="this.value=this.value.replace(/[^\d]/,'')"
+        />
+      </div>
+
+      <hr style="margin-top: 20px" />
+      <div id="infoArea">
+        <div class="info">
+          <div class="color">
+            <input
+              id="startPointColorSelector"
+              type="color"
+              value="#E91E62"
+              oninput="setColor(this)"
+            />
+          </div>
+          <div class="text">
+            <div>Inicio</div>
+          </div>
+        </div>
+        <div class="info">
+          <div class="color">
+            <input
+              id="goalPointColorSelector"
+              type="color"
+              value="#00ff0d"
+              oninput="setColor(this)"
+            />
+          </div>
+          <div class="text">
+            <div>Objetivo</div>
+          </div>
+        </div>
+        <div class="info">
+          <div class="color">
+            <input
+              id="wallColorSelector"
+              type="color"
+              value="#0c3547"
+              oninput="setColor(this)"
+            />
+          </div>
+          <div class="text">
+            <div>Obstaculo</div>
+          </div>
+        </div>
+      </div>
+      <hr style="margin: 10px 0 20px 0" />
+      <div id="episodeCount" style="margin-top: 10px" title=" ">
+        Episodio: 0
+      </div>
+      <div style="margin-top: 15px">
+        <div class="text">Tempo</div>
+        <input
+          type="range"
+          min="0"
+          max="1"
+          value="0"
+          step="0.01"
+          class="slider"
+          id="myRange"
+          oninput="setWaitTime(this.value)"
+        />
+        <div id="waitTimeLabel" class="text">0 segundos</div>
+      </div>
+      <button class="control" id="train">TREINAR</button>
+    </div>
+
+    <script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"
+    ></script>
+    <script src="logic.js"></script>
+  </body>
+</html>
